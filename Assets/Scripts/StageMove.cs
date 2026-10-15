@@ -10,15 +10,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
         moveInput = InputSystem.actions.FindAction("Move");
     }
 
+    public float threshold = 1.0f;
     void Update()
     {
         Debug.Log(moveInput.ReadValue<Vector2>());
 
         Vector3 rotation;
-        float threshold = 0.2f;
 
         rotation = new Vector3(moveInput.ReadValue<Vector2>().y*threshold, 0 ,moveInput.ReadValue<Vector2>().x*threshold);
 
-        this.transform.Rotate(rotation);
+        Quaternion tilt = Quaternion.Euler(rotation.x, 0f, rotation.z);
+        this.gameObject.GetComponent<Rigidbody>().MoveRotation(this.gameObject.GetComponent<Rigidbody>().transform.rotation * tilt);
     }
 }
