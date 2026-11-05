@@ -34,7 +34,7 @@ public class GoalMessage : MonoBehaviour
         if (goalCollider.isTrigger && other.CompareTag("Player"))
         {
             // メッセージを設定する
-            messageText.text = "ゴールしたよ！";
+            messageText.text = "_(OwO?)";
 
             // メッセージを表示する
             messageText.gameObject.SetActive(true);
